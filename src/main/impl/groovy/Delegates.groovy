@@ -8,13 +8,20 @@ import org.junit.Test
 @CompileStatic
 class Delegates {
 
-    static class Person {
+    class Person {
         String name
+
+        Person(String name) {
+            this.name = name
+        }
+
+        def foo(){
+            println "delegate"
+        }
     }
 
     class Numbers {
         List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5)
-
         def foo(){
             println "delegate"
         }
@@ -22,22 +29,20 @@ class Delegates {
 
     @Test
     def void delegatePerson() {
-        def person = new Person(name: 'Paul')
-        println personDelegate(person){
+        println personDelegate{
             name.toUpperCase()
+            foo()
         }
     }
 
-    def personDelegate(Person person,@DelegatesTo(value = Person, strategy = Closure.DELEGATE_FIRST)  Closure cl) {
-        cl.delegate = person
+    def personDelegate(@DelegatesTo(value = Person, strategy = Closure.OWNER_FIRST)  Closure cl) {
+        cl.delegate = new Person('Paul')
         cl.call()
     }
 
     @Test
     def void delegateNumber() {
         println numbersDelegate {
-            println owner.class
-            println delegate.class
             foo()
             foo1()
             numbers.sum()
@@ -49,11 +54,11 @@ class Delegates {
         cl.call()
     }
 
-    static def foo() {
+    def foo() {
         println "owner"
     }
 
-    static def foo1() {
+    def foo1() {
         println "owner1"
     }
 
