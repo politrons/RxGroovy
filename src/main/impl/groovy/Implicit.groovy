@@ -8,7 +8,7 @@ class Implicit {
     @Test
     def void implicit() {
         def greeting = { "Hello, $it!" }
-        assert greeting('Patrick') == 'Hello, Patrick!'
+        println greeting('Paul')
     }
 
 }
