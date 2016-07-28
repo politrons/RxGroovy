@@ -7,6 +7,9 @@ import org.junit.Test
  */
 class Closures {
 
+    /**
+     * Basic syntax of Closure which fundamental like functions on Java 8 or Scala
+     */
     @Test
     def void main() {
         println "upper case:" + upperCase("pablo")
@@ -15,6 +18,7 @@ class Closures {
         println "sum:${3 + 2}"
         println "default sum:" + sum()
         println "Array:" + array('one', 'two', 'three')
+        println "Implicit:" + implicit("this is an implicit value")
     }
 
     def upperCase = { String name = "default" -> name.toUpperCase() }
@@ -22,6 +26,8 @@ class Closures {
     def sum = { x = 1, y = 2 -> x + y }
 
     def array = { String... words -> words.each { word -> word.toUpperCase() }.toList() }
+
+    def implicit = { it.toUpperCase()}
 
     /**
      * Since we dont force a lazy evaluation in the Closure, the new value it´ not applied
@@ -63,33 +69,7 @@ class Closures {
 
     def nCopies = { int n, String str -> str.concat(" ") * n }
 
-    /**
-     * Apply memorize operator over a Closure catch the execution of this one with the argument passed
-     * In this example the first two invokation since we are passing the same argument the second call it´s cached
-     * The third call since the argument is new the execution take the normal time since it´s not cached
-     * shall print
-     *
-     *      exec_1:588
-     *      exec_2:1
-     *      exec_3:503
-     *      exec_4:0
-     */
-    @Test
-    def void memoize() {
-        def start = System.currentTimeMillis();
-        memoizeTest(1)
-        println "exec_1:${System.currentTimeMillis() - start}"
-        start = System.currentTimeMillis();
-        memoizeTest(1)
-        println "exec_2:${System.currentTimeMillis() - start}"
-        start = System.currentTimeMillis();
-        memoizeTest(2)
-        println "exec_3:${System.currentTimeMillis() - start}"
-        start = System.currentTimeMillis();
-        memoizeTest(1)
-        println "exec_4:${System.currentTimeMillis() - start}"
-    }
 
-    def memoizeTest = { s -> Thread.sleep(500) }.memoize()
 
 }
+
