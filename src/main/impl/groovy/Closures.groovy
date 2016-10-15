@@ -21,28 +21,28 @@ class Closures {
         println "Implicit:" + implicit("this is an implicit value")
     }
 
-    def upperCase = { String name = "default" -> name.toUpperCase() }
+    def upperCase = { name = "default" -> name.toUpperCase() }
 
     def sum = { x = 1, y = 2 -> x + y }
 
     def array = { String... words -> words.each { word -> word.toUpperCase() }.toList() }
 
-    def implicit = { it.toUpperCase()}
+    def implicit = { it.toUpperCase() }
 
     /**
-     * Since we dont force a lazy evaluation in the Closure, the new value it´ not applied
+     * To force a lazy evaluation we must specify -> in the Closure expression
      */
     @Test
     def void mutableString() {
         println mutable
         p = "B"
         println mutable
-        assert mutable == "Name: B"
+        assert mutable.equals("Name: B")
 
     }
 
     /**
-     * To force a lazy evaluation we muast specify -> in the Closure expresion
+     * Since we dont force a lazy evaluation in the Closure, the new value it´s not applied
      */
     @Test
     def void unMutableString() {
@@ -62,13 +62,12 @@ class Closures {
      * Curry argument will create the n number of functions copies which will accept 1 String argument
      */
     @Test
-    def void copy() {
+    def void curry() {
         def functions = nCopies.curry(3)
         println functions("test")
     }
 
-    def nCopies = { int n, String str -> str.concat(" ") * n }
-
+    def nCopies = { n, str -> str.concat(" ") * n }
 
 
 }

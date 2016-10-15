@@ -34,7 +34,33 @@ class Memorize {
         println "exec_4:${System.currentTimeMillis() - start}"
     }
 
-    def memoizeTest = { s -> Thread.sleep(500) }.memoize()
+    def memoizeTest = { n -> Thread.sleep(500) }.memoize()
+
+    @Test
+    def void testTrampoline() {
+        tramp = tramp.trampoline()
+        long freeMemory = Runtime.getRuntime().freeMemory()
+        println tramp(1, freeMemory)
+        println noTramp(1, freeMemory)
+    }
+
+    def tramp = { number, freeMemory ->
+        if (number.intValue() == 100) {
+            println "Memory Consumed:" + (Runtime.getRuntime().freeMemory())
+            return number.toString()
+        }
+        number += 1
+        tramp.trampoline(number, freeMemory)
+    }
+
+    def noTramp = { number, freeMemory ->
+        if (number.intValue() == 100) {
+            println "No Trampoline Memory Consumed:" + (Runtime.getRuntime().freeMemory())
+            return number.toString()
+        }
+        number += 1
+        noTramp(number, freeMemory)
+    }
 
 
 }

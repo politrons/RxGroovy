@@ -27,5 +27,19 @@ class Composition {
     def sumComposition = { it + 2 }
     def multiplyComposition = { it * 2 }
 
+    @Test
+    def void compositionWords() {
+        def words = world << groovy << hello
+        println words("HE110")
+    }
+
+    def hello = { String name ->
+        name.toUpperCase() }
+
+    def groovy = { String name ->
+        name.toLowerCase()
+    }
+
+    def world = { String name  -> name.replace("0", "o").replace("1", "l").toUpperCase() }
 
 }
