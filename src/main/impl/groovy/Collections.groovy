@@ -1,4 +1,5 @@
 package impl.groovy
+
 import org.junit.Test
 /**
  * Created by pabloperezgarcia on 27/7/16.
@@ -38,6 +39,31 @@ class Collections {
         newList.each { n -> print(n) }
     }
 
+    /**
+     * The * apply the method of the element list type for every element on the collection
+     */
+    @Test
+    def void spreadDotUpperCase() {
+        List<String> list = ["a", "b", "c"].asImmutable()
+        println list*.toUpperCase()
+    }
 
+    @Test
+    def void spreadDotCustom() {
+        List<A> list = [new A(1), new A(2), new A(3)].asImmutable()
+        println list*.multiplyBy(10)
+    }
+
+    class A {
+        int a
+
+        public def int multiplyBy(int number) {
+            a * number
+        }
+
+        A(int a) {
+            this.a = a
+        }
+    }
 }
 
