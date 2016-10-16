@@ -50,15 +50,33 @@ class Collections {
                 .findAll()//Get all values
     }
 
+    /**
+     * Java 8 predicate function "filter" which return true/false
+     */
     @Test
-    def void allMatch() {
+    def void predicateFunctions() {
         def newList = [1, "2", 3, "4", 5]
         println newList.stream()
-                .map { number -> number * 100 }
                 .filter { number -> Character.isDigit(number as char) }
+                .map { number -> number * 100 }
                 .allMatch { number -> Character.isDigit(number as char) }
     }
 
+    /**
+     * Java 8 Consumer function "peek" which receive argument but the function is void
+     */
+    @Test
+    def void consumerFunctions() {
+        def newList = [1, "2", 3, "4", 5]
+        newList.stream()
+                .peek { number -> println("Item emitted:$number") }
+                .findAll()
+    }
+
+    /**
+     * Foreach is so much less verbose than java!, just need to pass the lambdas with the item emitted without type,
+     * Only in case that you want autocomplete for your IDE you need to specify the type.
+     */
     @Test
     def void foreach() {
         def newList = [1, 2, 3, 4, 5]
