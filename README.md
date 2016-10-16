@@ -1,5 +1,3 @@
-# RxGroovy
-
   ![My image](src/resources/img/grovy.png)
 
 
