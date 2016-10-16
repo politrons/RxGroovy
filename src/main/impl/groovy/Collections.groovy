@@ -39,10 +39,11 @@ class Collections {
         def newList = [1, 1, 2, 3, 8, 4, 5, 6, 3, 7, 8, 9, 3, 10]
         println newList.stream()
                 .map { number -> number * 100 }
-                .filter { number -> number > 500 }
-                .distinct()
-                .sorted()
-                .findAll()
+                .filter { number -> number > 500 } //predicate function
+                .distinct()//only unique values
+                .sorted()//Order items
+                .limit(4)//Max number of items
+                .findAll()//Get all values
     }
 
     @Test
