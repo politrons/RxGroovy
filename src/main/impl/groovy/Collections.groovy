@@ -92,19 +92,46 @@ class Collections {
                 .findAll()
     }
 
-    /**
-     * Foreach is so much less verbose than java!, just need to pass the lambdas with the item emitted without type,
-     * Only in case that you want autocomplete for your IDE you need to specify the type.
-     */
+    @Test
+    def void groups() {
+        def (passed, failed) = [1, 2, 3, 4, 5, 6, 7].split { it > 4 }
+        println passed
+        println failed
+    }
+
+    @Test
+    def void groupsHumans() {
+        def (male, female) = [new Human("Pablo", "male"),
+                              new Human("John", "male"),
+                              new Human("Maria", "female"),
+                              new Human("Bea", "female"),
+                              new Human("Jack", "male")]
+                .split { it.sex.equals("male") }
+        println male
+        println female
+    }
+
+    @Test
+    def void numbers() {
+        def (number, string) = ["1", "2d", "bla", "4f", "foo"]
+                .split { it.isNumber() || it.isFloat() || it.isDouble() }
+        println "number:" + number
+        println "strung:" + string
+    }
+
+/**
+ * Foreach is so much less verbose than java!, just need to pass the lambdas with the item emitted without type,
+ * Only in case that you want autocomplete for your IDE you need to specify the type.
+ */
     @Test
     def void foreach() {
         def newList = [1, 2, 3, 4, 5]
         newList.each { n -> print(n) }
     }
 
-    /**
-     * The * apply the method of the element list type for every element on the collection
-     */
+/**
+ * The * apply the method of the element list type for every element on the collection
+ */
     @Test
     def void spreadDotUpperCase() {
         List<String> list = ["a", "b", "c"].asImmutable()
@@ -128,5 +155,18 @@ class Collections {
             this.a = a
         }
     }
+
+
+    class Human {
+
+        String name;
+        String sex;
+
+        Human(String name, String sex) {
+            this.name = name
+            this.sex = sex
+        }
+    }
+
 }
 
