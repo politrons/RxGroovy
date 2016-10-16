@@ -1,6 +1,6 @@
 # RxGroovy
 
-    ![My image](src/main/resources/img/grovy.png)
+  ![My image](src/resources/img/grovy.png)
 
 
 All the most common features of Groovy
@@ -28,11 +28,11 @@ All the most common features of Groovy
 
 Some features of Reactive Groovy
 
- ![My image](src/main/resources/img/rsz_reactive-extensions.png)
+ ![My image](src/resources/img/rsz_reactive-extensions.png)
 
 * **Creating**
 
-    ![My image](src/main/resources/img/rsz_1createc.png)
+    ![My image](src/resources/img/rsz_1createc.png)
     * [Create] (src/main/impl/rx/Creation/Creational.groovy)
 
 
