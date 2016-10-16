@@ -34,11 +34,15 @@ class Collections {
                 .findAll()
     }
 
+    /**
+     * Groovy can use Java 8 stream with all same features
+     */
     @Test
     def void stream() {
         def newList = [1, 1, 2, 3, 8, 4, 5, 6, 3, 7, 8, 9, 3, 10]
         println newList.stream()
                 .map { number -> number * 100 }
+                .peek { number -> println("Item emitted:$number") } //Consumer function, like onNext
                 .filter { number -> number > 500 } //predicate function
                 .distinct()//only unique values
                 .sorted()//Order items
