@@ -1,7 +1,7 @@
   ![My image](src/resources/img/grovy.png)
 
 
-All the most common features of Groovy
+Some of the most common features of Groovy
 
 * **[Closures] (src/main/impl/groovy/Closures.groovy)**
 
