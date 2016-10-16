@@ -115,23 +115,31 @@ class Collections {
     def void numbers() {
         def (number, string) = ["1", "2d", "bla", "4f", "foo"]
                 .split { it.isNumber() || it.isFloat() || it.isDouble() }
-        println "number:" + number
-        println "strung:" + string
+        println "number:  $number"
+        println "strung: $string"
     }
 
-/**
- * Foreach is so much less verbose than java!, just need to pass the lambdas with the item emitted without type,
- * Only in case that you want autocomplete for your IDE you need to specify the type.
- */
+    @Test
+    def void maxAndMin() {
+        def max = [1, 2, 3, 4, 5, 6, 7].max()
+        def min = [1, 2, 3, 4, 5, 6, 7].min()
+        println "max $max"
+        println "min $min"
+    }
+
+    /**
+     * Foreach is so much less verbose than java!, just need to pass the lambdas with the item emitted without type,
+     * Only in case that you want autocomplete for your IDE you need to specify the type.
+     */
     @Test
     def void foreach() {
         def newList = [1, 2, 3, 4, 5]
         newList.each { n -> print(n) }
     }
 
-/**
- * The * apply the method of the element list type for every element on the collection
- */
+    /**
+     * The * apply the method of the element list type for every element on the collection
+     */
     @Test
     def void spreadDotUpperCase() {
         List<String> list = ["a", "b", "c"].asImmutable()
