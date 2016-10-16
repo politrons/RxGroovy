@@ -1,4 +1,4 @@
-package impl.groovy.delegate
+package impl.groovy
 
 import groovy.transform.CompileStatic
 import org.junit.Test

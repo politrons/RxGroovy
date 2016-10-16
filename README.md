@@ -1,18 +1,17 @@
 # RxGroovy
 
+    <!--![My image](src/main/resources/img/rsz_1createc.png)-->
+
+
 All the most common features of Groovy
 
 * **[Closures] (src/main/impl/groovy/Closures.groovy)**
 
-    <!--![My image](src/main/resources/img/rsz_1zipo.png)-->
+* **[Collections] (src/main/impl/groovy/Collections.groovy)**
 
 * **[Delegates] (src/main/impl/groovy/Delegates.groovy)**
-
-    <!--![My image](src/main/resources/img/rsz_1createc.png)-->
-
     
 * **[Implicits] (src/main/impl/groovy/Implicits.groovy)**
 
-    ![My image](src/main/resources/img/rsz_1filter.png)
 
 

@@ -14,13 +14,10 @@ class Bindables {
         String name, email
     }
 
-
     @Test
     def void testBindables() {
         def u = new User(name: 'mrhaki', email: 'mrhaki@mrhaki.com')
-        // Since Groovy 2.2 we don't have to use the as keyword like
-        // { ... } as PropertyChangeListener,
-        // but we can rely on implicit coercion.
+
         u.addPropertyChangeListener { event ->
             println "Changed property $event.propertyName from $event.oldValue to $event.newValue"
         }
