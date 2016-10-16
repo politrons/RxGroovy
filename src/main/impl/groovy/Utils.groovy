@@ -7,8 +7,21 @@ import java.util.stream.Collectors
 /**
  * Created by pabloperezgarcia on 27/7/16.
  */
-class Syntax {
+class Utils {
 
+    /**
+     * Read files in groovy is really simple, without needs any external library as in Java to avoid InputStreams
+     */
+    @Test
+    def void readFile() {
+        println new File("src/resources/test.txt").text
+        println new File("src/resources/test.txt").readLines()
+    }
+
+    /**
+     * Interpolation it´ really handy to avoid have to use String format or other mechanism
+     * to add variables into string
+     */
     @Test
     def void interpolation() {
         def name = "Pablo"

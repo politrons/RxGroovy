@@ -19,6 +19,8 @@ Some of the most common features of Groovy
 
 * **[Composition] (src/main/impl/groovy/Composition.groovy)**
 
+* **[Utils] (src/main/impl/groovy/Utils.groovy)**
+
 * **[Annotation] (src/main/impl/groovy/Implicits.groovy)**
     * [Bindables] (src/main/impl/groovy/annotation/Bindables.groovy)
     * [Canonicals] (src/main/impl/groovy/annotation/Canonicals.groovy)

@@ -34,6 +34,25 @@ class Collections {
                 .findAll()
     }
 
+    @Test
+    def void collectWithClosure() {
+        def list = (1..10).collect { it * 2 }
+        println list
+    }
+
+    /**
+     * Passing the seed and closure to inject it give us the change to iterate the array and check if the items
+     * are part of the sentence, in case of true we pass the seed to next item interaction
+     */
+    @Test
+    def void inject() {
+        def wordList = ["test", "Groovy", "Grails", "Gradle", "dynamic"]
+        def sentence = "This is an example blog talking about Groovy and Gradle."
+        println wordList.inject(false) {
+            acc, value -> acc || sentence.contains(value)
+        }
+    }
+
     /**
      * Groovy can use Java 8 stream with all same features
      */
