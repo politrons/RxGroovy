@@ -1,9 +1,11 @@
 package impl.groovy.annotation
-import groovy.transform.CompileDynamic
+
 import org.junit.Test
 
 /**
- * Created by pabloperezgarcia on 15/10/2016.
+ * Allow us use the same operator of Closure for different types
+ * In this example we have different class types treated as the same type using
+ * the same operator in the same collection
  */
 class DynamicTyping {
 
@@ -13,21 +15,21 @@ class DynamicTyping {
     ]
 
     private static class Car {
-        public final int cost = 10000
+        public final int cost = 100
     }
 
     private static class TV {
-        public final int cost = 1000
+        public final int cost = 50
+    }
+
+
+    public static int sumDynamic() {
+        return INVENTORY.sum { it.cost } as int
     }
 
     @Test
-    def void compileDynamicTest(){
+    def void compileDynamicTest() {
         println sumDynamic()
-    }
-
-    @CompileDynamic
-    public static int sumDynamic() {
-        return INVENTORY.sum { it.cost } as int
     }
 
 
