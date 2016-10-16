@@ -1,6 +1,7 @@
 package impl.groovy
 
 import org.junit.Test
+
 /**
  * Created by pabloperezgarcia on 27/7/16.
  */
@@ -29,8 +30,28 @@ class Collections {
     def void list() {
         def newList = [1, 2, 3, 4, 5]
         println newList.stream()
-                .map({ number -> number * 100 })
+                .map { number -> number * 100 }
                 .findAll()
+    }
+
+    @Test
+    def void stream() {
+        def newList = [1, 1, 2, 3, 8, 4, 5, 6, 3, 7, 8, 9, 3, 10]
+        println newList.stream()
+                .map { number -> number * 100 }
+                .filter { number -> number > 500 }
+                .distinct()
+                .sorted()
+                .findAll()
+    }
+
+    @Test
+    def void allMatch() {
+        def newList = [1, "2", 3, "4", 5]
+        println newList.stream()
+                .map { number -> number * 100 }
+                .filter { number -> Character.isDigit(number as char) }
+                .allMatch { number -> Character.isDigit(number as char) }
     }
 
     @Test
