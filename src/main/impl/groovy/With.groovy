@@ -4,7 +4,7 @@ import groovy.transform.CompileStatic
 import org.junit.Test
 
 /**
- * With operator allow us to open a closure insude the context of the instance,
+ * With operator allow us to open a closure inside the context of the instance,
  * Also in this context we can consume the external class context
  */
 @CompileStatic
