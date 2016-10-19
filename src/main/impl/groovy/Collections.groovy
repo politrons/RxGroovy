@@ -20,6 +20,10 @@ class Collections {
         println defaultMap.get(1)
         println defaultMap.get(2)
 
+        defaultMap << ["3": "tres"]
+        println "new element in map ${defaultMap."3"}"
+        assert defaultMap."3" == "tres"
+
     }
 
     /**
@@ -32,6 +36,15 @@ class Collections {
         println newList.stream()
                 .map { number -> number * 100 }
                 .findAll()
+        println "New element in list ${newList << 6}"
+        assert 2 in newList
+        assert 6 in newList
+    }
+
+    @Test
+    def void range() {
+        def range = 1..5
+        assert 4 in range
     }
 
     @Test
@@ -167,8 +180,8 @@ class Collections {
 
     class Human {
 
-        String name;
-        String sex;
+        def name;
+        def sex;
 
         Human(String name, String sex) {
             this.name = name

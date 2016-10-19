@@ -1,13 +1,10 @@
 package impl.groovy
 
-import groovy.transform.CompileStatic
 import org.junit.Test
-
 /**
  * With operator allow us to open a closure inside the context of the instance,
  * Also in this context we can consume the external class context
  */
-@CompileStatic
 class With {
 
     static def main() { "main" }
@@ -32,9 +29,36 @@ class With {
         }
     }
 
+    @Test
+    def void creation() {
+        new Person().with {
+            name = "John"
+            age = 35
+            sex = "male"
+            nationality = "UK"
+        }
+    }
+
+    @Test
+    def void compare() {
+        def person1 = new Person().with {
+            name = "John"
+            age = 35
+            sex = "male"
+            nationality = "UK"
+        }
+
+        def person2 = new Person(name: "Pablo", age: 35, sex: "male", nationality: "Spain")
+        println person1.is(person2)//To compare reference objects
+        println person1 == null// == as Equals in java Control null elements
+    }
+
     class Person {
 
-        def name = "Pablo"
+        String name = "Pablo"
+        int age
+        String sex
+        String nationality
 
         def printDescription() {
             println "I´ a human"

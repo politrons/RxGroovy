@@ -52,6 +52,60 @@ class Utils {
         println arg
     }
 
+    @Test
+    def void defaultConstructor() {
+        new A(a: "A", a1: "A1")
+    }
+
+    public class A {
+        String a
+        String a1
+    }
+
+    @Test
+    def void nullValues() {
+        def nullValue = null
+        if (nullValue) {
+            println "If this happens I wont trust Groovy anymore"
+        } else {
+            println "This value is null"
+        }
+        //Elvis operator
+        def result = nullValue ?: "Unknown"
+        println result
+    }
+
+    @Test
+    def void multiMethods(){
+        Object o = "Object";
+        assert method(o) == "string"
+         o = 20d;
+        assert method(o) == "double"
+        o = 20.0f;
+        assert method(o) == "float"
+    }
+
+    String method(String arg) {
+        return "string";
+    }
+    String method(Double arg) {
+        return "double";
+    }
+    String method(Float arg) {
+        return "float";
+    }
+
+    @Test
+    def void wrapTest(){
+        println wrap("hello groovy", 5)
+    }
+
+    String wrap(String input, int limit) {
+        def m = (input =~ /(.{1,$limit})( |\n|$)/)
+        m.collect{ it[1] }.join("\n")
+    }
+
+
 
 }
 
