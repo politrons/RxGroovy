@@ -9,6 +9,15 @@ import java.util.stream.Collectors
  */
 class Utils {
 
+    @Test
+    def void innerFunction(){
+
+        def infun={String arg  -> "works with arguments $arg"}
+
+        println infun("argument")
+
+    }
+
     /**
      * Read files in groovy is really simple, without needs any external library as in Java to avoid InputStreams
      */
@@ -103,6 +112,15 @@ class Utils {
     String wrap(String input, int limit) {
         def m = (input =~ /(.{1,$limit})( |\n|$)/)
         m.collect{ it[1] }.join("\n")
+    }
+
+    @Test
+    def void tokenaizer(){
+        String keyString = "uniqueKey=trn:tesco:product:uuid:f98dbcf7-e74a-4739-b545-5e748a7c5609&uniqueKey=trn:tesco:product:uuid:4629516f-a33e-450d-a949-1f7a96033da7&uniqueKey=trn:tesco:product:uuid:fdd41a02-18e2-43e7-82f4-1df5129601c2"
+        keyString=keyString.replace("uniqueKey=","")
+        String[] keys = keyString.split("&")
+        println keys.flatten()
+
     }
 
 
