@@ -109,6 +109,7 @@ class Utils {
         println wrap("hello groovy", 5)
     }
 
+    // @autor KrzysztofKowalczyk    
     String wrap(String input, int limit) {
         def m = (input =~ /(.{1,$limit})( |\n|$)/)
         m.collect{ it[1] }.join("\n")
