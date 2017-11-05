@@ -4,23 +4,14 @@
 Some of the most common features of Groovy
 
 * **[Closures](src/main/impl/groovy/Closures.groovy)**
-
 * **[Collections](src/main/impl/groovy/Collections.groovy)**
-
 * **[Delegates](src/main/impl/groovy/Delegates.groovy)**
-    
 * **[Implicits](src/main/impl/groovy/Implicits.groovy)**
-
 * **[Memorize](src/main/impl/groovy/Memorize.groovy)**
-
 * **[Switch](src/main/impl/groovy/Switch.groovy)**
-
 * **[With](src/main/impl/groovy/With.groovy)**
-
 * **[Composition](src/main/impl/groovy/Composition.groovy)**
-
 * **[Utils](src/main/impl/groovy/Utils.groovy)**
-
 * **[Annotation](src/main/impl/groovy/Implicits.groovy)**
     * [Bindables](src/main/impl/groovy/annotation/Bindables.groovy)
     * [Canonicals](src/main/impl/groovy/annotation/Canonicals.groovy)
